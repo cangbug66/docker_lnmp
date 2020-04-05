@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:1.17.9-alpine
+    tty: true
+    restart: always
+    volumes:
+      - ./nginx/web_code:/web_code:rw
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/nginx_logs:rw
+    ports:
+      - 1080:80
+      - 1043:443
+    depends_on:
+      - php
+    networks:
+      lnmp_net:
+  php:
+#    build:
+#      context: ./php
+#      dockerfile: Dockerfile_simple
+    image: myfpm7.3:2.0
+    tty: true
+    restart: always
+    volumes:
+      - ./nginx/web_code:/web_code:rw
+    ports:
+      - 1090:9000
+      - 1095:9501
+#    command:
+#      - cd /web_code && php a.php
+    networks:
+      lnmp_net:
+  mysql:
+    image: mysql:5.7
+    tty: true
+    restart: always
+    ports:
+      - 1036:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      TZ: "Asia/Shanghai"
+    volumes:
+      -  ./mysql:/var/lib/mysql:rw
+    networks:
+      lnmp_net:
+  redis:
+    image: redis:5.0
+    tty: true
+    restart: always
+    ports:
+      - 1079:6379
+    networks:
+      lnmp_net:
+    volumes:
+      - ./redis/data:/data
+    environment:
+      appendonly: "yes"#持久化
+networks:
+  lnmp_net:

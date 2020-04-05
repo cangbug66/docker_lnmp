@@ -1,0 +1,4 @@
+172.27.0.1 - - [29/Mar/2020:09:34:00 +0000] "GET / HTTP/1.1" 200 146 "-" "curl/7.47.0" "-"
+192.168.10.1 - - [29/Mar/2020:09:34:17 +0000] "GET / HTTP/1.1" 200 146 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36" "-"
+192.168.10.1 - - [29/Mar/2020:09:34:17 +0000] "GET /favicon.ico HTTP/1.1" 404 27 "http://192.168.10.10:1080/" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36" "-"
+192.168.10.1 - - [29/Mar/2020:09:34:57 +0000] "GET /a.php HTTP/1.1" 200 87020 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36" "-"
